@@ -1,7 +1,7 @@
+// Gauntlet Tiers - Admin Panel JavaScript with Firebase
 
-import { getDatabase, ref, onValue, set, update, remove, get } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+import { database, ref, onValue, set, update, remove } from "./firebase-app.js";
 
-let database;
 let currentEditMode = 'sword';
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -16,30 +16,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if (loginWarning) loginWarning.style.display = 'none';
         if (adminDashboard) adminDashboard.style.display = 'grid';
         
-        // Initialize Firebase
-        if (window.firebaseDB) {
-            database = window.firebaseDB;
-            initAdmin();
-        } else {
-            setTimeout(() => {
-                if (window.firebaseDB) {
-                    database = window.firebaseDB;
-                    initAdmin();
-                }
-            }, 1000);
-        }
+        // Initialize admin features
+        initAdminTabs();
+        initTierEditor();
+        loadAdminData();
+        setupEventListeners();
     } else {
         if (loginWarning) loginWarning.style.display = 'block';
         if (adminDashboard) adminDashboard.style.display = 'none';
     }
 });
-
-function initAdmin() {
-    initAdminTabs();
-    initTierEditor();
-    loadAdminData();
-    setupEventListeners();
-}
 
 function setupEventListeners() {
     // Add player form
@@ -172,7 +158,7 @@ window.addPlayer = function(name, mode, tier) {
         loadAdminData();
     }).catch((error) => {
         console.error('Error adding player:', error);
-        showNotification('Error adding player', 'error');
+        showNotification('Error adding player: ' + error.message, 'error');
     });
 }
 
@@ -186,7 +172,7 @@ window.removePlayerFromTier = function(playerName, mode) {
         loadAdminData();
     }).catch((error) => {
         console.error('Error removing player:', error);
-        showNotification('Error removing player', 'error');
+        showNotification('Error removing player: ' + error.message, 'error');
     });
 }
 
@@ -203,13 +189,15 @@ function loadAdminData() {
         
         Object.keys(allData).forEach(mode => {
             const modeData = allData[mode];
-            Object.values(modeData).forEach(player => {
-                allPlayers.push({
-                    ...player,
-                    mode: mode,
-                    lastUpdated: new Date(player.timestamp || Date.now()).toLocaleDateString()
+            if (modeData) {
+                Object.values(modeData).forEach(player => {
+                    allPlayers.push({
+                        ...player,
+                        mode: mode,
+                        lastUpdated: new Date(player.timestamp || Date.now()).toLocaleDateString()
+                    });
                 });
-            });
+            }
         });
         
         renderPlayersTable(allPlayers);
@@ -256,7 +244,7 @@ window.resetTiers = function() {
         showNotification('All tier data reset successfully', 'success');
     }).catch((error) => {
         console.error('Error resetting tiers:', error);
-        showNotification('Error resetting tiers', 'error');
+        showNotification('Error resetting tiers: ' + error.message, 'error');
     });
 }
 
