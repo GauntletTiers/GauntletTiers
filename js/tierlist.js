@@ -1,30 +1,30 @@
-import { getDatabase, ref, onValue, set, update, remove } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+// Gauntlet Tiers - Tier List JavaScript with Firebase
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
 
 let currentMode = 'sword';
 let database;
 let tierData = {};
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Wait for Firebase to initialize
-    if (window.firebaseDB) {
-        database = window.firebaseDB;
-        initTierList();
-    } else {
-        // Retry after a short delay
-        setTimeout(() => {
-            if (window.firebaseDB) {
-                database = window.firebaseDB;
-                initTierList();
-            } else {
-                console.error('Firebase not initialized');
-                showNotification('Error connecting to database', 'error');
-            }
-        }, 1000);
+    // Check if Firebase config exists
+    if (!window.firebaseConfig) {
+        console.error('Firebase config not found!');
+        showNotification('Error: Firebase not configured', 'error');
+        return;
     }
+    
+    // Initialize Firebase
+    const app = initializeApp(window.firebaseConfig);
+    database = getDatabase(app);
+    
+    // Initialize tier list
+    initTierList();
 });
 
 function initTierList() {
-    // Initialize tier list
+    // Load initial tier list
     loadTierList(currentMode);
     
     // Mode selector
@@ -84,50 +84,3 @@ function createPlayerCard(player) {
 function showPlayerDetails(playerName) {
     showNotification(`Viewing profile: ${playerName}`, 'info');
 }
-
-// Admin functions for managing tiers
-export function addPlayerToTier(playerName, tier, mode) {
-    const playerRef = ref(database, `tiers/${mode}/${playerName}`);
-    
-    set(playerRef, {
-        name: playerName,
-        tier: tier,
-        avatar: playerName.charAt(0).toUpperCase(),
-        timestamp: Date.now()
-    }).then(() => {
-        showNotification(`Player "${playerName}" added to ${tier.toUpperCase()}`, 'success');
-    }).catch((error) => {
-        console.error('Error adding player:', error);
-        showNotification('Error adding player', 'error');
-    });
-}
-
-export function removePlayer(playerName, mode) {
-    const playerRef = ref(database, `tiers/${mode}/${playerName}`);
-    
-    remove(playerRef).then(() => {
-        showNotification(`Player "${playerName}" removed`, 'success');
-    }).catch((error) => {
-        console.error('Error removing player:', error);
-        showNotification('Error removing player', 'error');
-    });
-}
-
-export function updatePlayerTier(playerName, newTier, mode) {
-    const playerRef = ref(database, `tiers/${mode}/${playerName}`);
-    
-    update(playerRef, {
-        tier: newTier,
-        timestamp: Date.now()
-    }).then(() => {
-        showNotification(`Player "${playerName}" moved to ${newTier.toUpperCase()}`, 'success');
-    }).catch((error) => {
-        console.error('Error updating player:', error);
-        showNotification('Error updating player', 'error');
-    });
-}
-
-// Make functions available globally
-window.addPlayerToTier = addPlayerToTier;
-window.removePlayer = removePlayer;
-window.updatePlayerTier = updatePlayerTier;
