@@ -1,7 +1,9 @@
 // Gauntlet Tiers - Admin Panel JavaScript with Firebase
 
-import { database, ref, onValue, set, update, remove } from "./firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+import { getDatabase, ref, onValue, set, update, remove } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
 
+let database;
 let currentEditMode = 'sword';
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,6 +17,17 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isAdmin && userEmail === 'support.gauntlettiers@gmail.com') {
         if (loginWarning) loginWarning.style.display = 'none';
         if (adminDashboard) adminDashboard.style.display = 'grid';
+        
+        // Check if Firebase config exists
+        if (!window.firebaseConfig) {
+            console.error('Firebase config not found!');
+            showNotification('Error: Firebase not configured', 'error');
+            return;
+        }
+        
+        // Initialize Firebase
+        const app = initializeApp(window.firebaseConfig);
+        database = getDatabase(app);
         
         // Initialize admin features
         initAdminTabs();
