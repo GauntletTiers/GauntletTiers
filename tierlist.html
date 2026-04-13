@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tier List - Gauntlet Tiers</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>GAUNTLET TIERS</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="tierlist.html" class="nav-link active">Tier List</a></li>
+                <li><a href="community.html" class="nav-link">Community</a></li>
+                <li><a href="support.html" class="nav-link">Support</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Log In</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tier List Section -->
+    <section class="tierlist-section">
+        <div class="container">
+            <div class="tierlist-header">
+                <h1>Competitive PvP Tier List</h1>
+                <p>Rankings updated weekly based on tournament performance</p>
+                
+                <!-- Game Mode Selector -->
+                <div class="mode-selector">
+                    <button class="mode-btn active" data-mode="sword">Sword</button>
+                    <button class="mode-btn" data-mode="axe">Axe</button>
+                    <button class="mode-btn" data-mode="uhc">UHC</button>
+                    <button class="mode-btn" data-mode="pot">Pot</button>
+                    <button class="mode-btn" data-mode="crystal">Crystal</button>
+                    <button class="mode-btn" data-mode="smp">SMP</button>
+                </div>
+            </div>
+
+            <!-- Tier List Container -->
+            <div class="tierlist-container">
+                <!-- HT1 - Best -->
+                <div class="tier-row" data-tier="ht1">
+                    <div class="tier-label tier-ht1-label">
+                        <span>HT1</span>
+                        <small>Best</small>
+                    </div>
+                    <div class="tier-content" id="ht1-players">
+                        <div class="tier-placeholder">No players ranked yet</div>
+                    </div>
+                </div>
+
+                <!-- LT1 - 2nd Best -->
+                <div class="tier-row" data-tier="lt1">
+                    <div class="tier-label tier-lt1-label">
+                        <span>LT1</span>
+                        <small>2nd Best</small>
+                    </div>
+                    <div class="tier-content" id="lt1-players">
+                        <div class="tier-placeholder">No players ranked yet</div>
+                    </div>
+                </div>
+
+                <!-- HT2 -->
+                <div class="tier-row" data-tier="ht2">
+                    <div class="tier-label tier-ht2-label">
+                        <span>HT2</span>
+                    </div>
+                    <div class="tier-content" id="ht2-players">
+                        <div class="tier-placeholder">No players ranked yet</div>
+                    </div>
+                </div>
+
+                <!-- LT2 -->
+                <div class="tier-row" data-tier="lt2">
+                    <div class="tier-label tier-lt2-label">
+                        <span>LT2</span>
+                    </div>
+                    <div class="tier-content" id="lt2-players">
+                        <div class="tier-placeholder">No players ranked yet</div>
+                    </div>
+                </div>
+
+                <!-- HT3 -->
+                <div class="tier-row" data-tier="ht3">
+                    <div class="tier-label tier-ht3-label">
+                        <span>HT3</span>
+                    </div>
+                    <div class="tier-content" id="ht3-players">
+                        <div class="tier-placeholder">No players ranked yet</div>
+                    </div>
+                </div>
+
+                <!-- LT3 -->
+                <div class="tier-row" data-tier="lt3">
+                    <div class="tier-label tier-lt3-label">
+                        <span>LT3</span>
+                    </div>
+                    <div class="tier-content" id="lt3-players">
+                        <div class="tier-placeholder">No players ranked yet</div>
+                    </div>
+                </div>
+
+                <!-- HT4 -->
+                <div class="tier-row" data-tier="ht4">
+                    <div class="tier-label tier-ht4-label">
+                        <span>HT4</span>
+                    </div>
+                    <div class="tier-content" id="ht4-players">
+                        <div class="tier-placeholder">No players ranked yet</div>
+                    </div>
+                </div>
+
+                <!-- LT4 -->
+                <div class="tier-row" data-tier="lt4">
+                    <div class="tier-label tier-lt4-label">
+                        <span>LT4</span>
+                    </div>
+                    <div class="tier-content" id="lt4-players">
+                        <div class="tier-placeholder">No players ranked yet</div>
+                    </div>
+                </div>
+
+                <!-- HT5 - 2nd Worst -->
+                <div class="tier-row" data-tier="ht5">
+                    <div class="tier-label tier-ht5-label">
+                        <span>HT5</span>
+                        <small>2nd Worst</small>
+                    </div>
+                    <div class="tier-content" id="ht5-players">
+                        <div class="tier-placeholder">No players ranked yet</div>
+                    </div>
+                </div>
+
+                <!-- LT5 - Worst -->
+                <div class="tier-row" data-tier="lt5">
+                    <div class="tier-label tier-lt5-label">
+                        <span>LT5</span>
+                        <small>Worst</small>
+                    </div>
+                    <div class="tier-content" id="lt5-players">
+                        <div class="tier-placeholder">No players ranked yet</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="tier-legend">
+                <h3>Tier Legend</h3>
+                <div class="legend-grid">
+                    <div class="legend-item">
+                        <span class="legend-color tier-ht1-bg"></span>
+                        <span>HT1 - Highest Tier 1 (Elite)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color tier-lt1-bg"></span>
+                        <span>LT1 - Low Tier 1 (Expert)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color tier-ht2-bg"></span>
+                        <span>HT2 - High Tier 2 (Advanced)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color tier-lt2-bg"></span>
+                        <span>LT2 - Low Tier 2 (Intermediate)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color tier-ht3-bg"></span>
+                        <span>HT3 - High Tier 3 (Average)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color tier-lt3-bg"></span>
+                        <span>LT3 - Low Tier 3 (Below Average)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color tier-ht4-bg"></span>
+                        <span>HT4 - High Tier 4 (Beginner)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color tier-lt4-bg"></span>
+                        <span>LT4 - Low Tier 4 (Novice)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color tier-ht5-bg"></span>
+                        <span>HT5 - High Tier 5 (Learning)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color tier-lt5-bg"></span>
+                        <span>LT5 - Low Tier 5 (New)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>GAUNTLET TIERS</span>
+                    <p>The most accurate PvP ranking system.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="tierlist.html">Tier List</a></li>
+                            <li><a href="community.html">Community</a></li>
+                            <li><a href="support.html">Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Social</h4>
+                        <ul>
+                            <li><a href="https://discord.gg/gauntlettiers" target="_blank"><i class="fab fa-discord"></i> Discord</a></li>
+                            <li><a href="https://youtube.com/@gauntlettiers" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+                            <li><a href="https://twitter.com/gauntlettiers" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Admin</h4>
+                        <ul>
+                            <li><a href="admin.html">Admin Panel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gauntlet Tiers. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // REPLACE THESE VALUES WITH YOUR ACTUAL FIREBASE CONFIG
+        const firebaseConfig = {
+            apiKey: "AIzaSyA-Sv6xWjgfrtPSxHs_V2fWzlJ93aOG6Wk",
+            authDomain: "gauntlet-tiers-23926.firebaseapp.com",
+            databaseURL: "https://gauntlet-tiers-23926-default-rtdb.firebaseio.com",
+            projectId: "gauntlet-tiers-23926",
+            storageBucket: "gauntlet-tiers-23926.firebasestorage.app",
+            messagingSenderId: "817926603045",
+            appId: "1:817926603045:web:856ed273519a95f13f1acc"
+        };
+        window.firebaseConfig = firebaseConfig;
+    </script>
+    <script type="module" src="js/firebase-app.js"></script>
+
+    <script src="js/main.js"></script>
+    <script type="module" src="js/tierlist.js"></script>
+</body>
+</html>

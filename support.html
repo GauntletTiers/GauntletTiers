@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Gauntlet Tiers</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>GAUNTLET TIERS</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="tierlist.html" class="nav-link">Tier List</a></li>
+                <li><a href="community.html" class="nav-link">Community</a></li>
+                <li><a href="support.html" class="nav-link active">Support</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Log In</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Support Section -->
+    <section class="support-section">
+        <div class="container">
+            <div class="support-header">
+                <h1>Support Center</h1>
+                <p>Need help? We're here for you.</p>
+            </div>
+
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h2>FAQ</h2>
+                    <p>Find answers to commonly asked questions about rankings, tournaments, and account management.</p>
+                    <a href="#faq" class="btn btn-outline">View FAQ</a>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h2>Contact Us</h2>
+                    <p>Can't find what you're looking for? Send us an email and we'll respond within 24 hours.</p>
+                    <a href="mailto:support.gauntlettiers@gmail.com" class="btn btn-outline">Email Support</a>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h2>Report Issue</h2>
+                    <p>Found a bug or need to report a player? Use our report form to let us know.</p>
+                    <a href="#" class="btn btn-outline">Submit Report</a>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section" id="faq">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How does the tier system work?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our tier system ranges from HT1 (Highest Tier 1 - Best) to LT5 (Lowest Tier 5 - Worst). Players are ranked based on their performance in official tournaments. HT1 and LT1 represent the elite players, while HT5 and LT5 are for beginners.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How do I get ranked?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To get ranked, you need to participate in our official tournaments. Join our Discord server to find upcoming tournaments and registration details. After participating in at least 3 tournaments, you'll receive an initial tier placement.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Can I appeal my tier placement?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, tier appeals can be submitted through the admin panel or by contacting support. You must provide evidence of recent tournament performances that justify a tier change. Appeals are reviewed weekly.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How often are tier lists updated?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Tier lists are updated every Sunday based on the previous week's tournament results. Major updates may occur after large tournaments or season finals.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What game modes are supported?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We currently support rankings for: Sword PvP, Axe PvP, UHC (Ultra Hardcore), Pot PvP, Crystal PvP, and SMP PvP. Each mode has its own separate tier list.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-section">
+                <h2>Contact Support</h2>
+                <form class="contact-form" id="support-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="support-name">Name</label>
+                            <input type="text" id="support-name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="support-email">Email</label>
+                            <input type="email" id="support-email" placeholder="Your email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="support-subject">Subject</label>
+                        <select id="support-subject" required>
+                            <option value="">Select a topic</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="tier">Tier Appeal</option>
+                            <option value="tournament">Tournament Issue</option>
+                            <option value="account">Account Problem</option>
+                            <option value="bug">Bug Report</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="support-message">Message</label>
+                        <textarea id="support-message" rows="5" placeholder="Describe your issue or question..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>GAUNTLET TIERS</span>
+                    <p>The most accurate PvP ranking system.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="tierlist.html">Tier List</a></li>
+                            <li><a href="community.html">Community</a></li>
+                            <li><a href="support.html">Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Social</h4>
+                        <ul>
+                            <li><a href="https://discord.gg/gauntlettiers" target="_blank"><i class="fab fa-discord"></i> Discord</a></li>
+                            <li><a href="https://youtube.com/@gauntlettiers" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+                            <li><a href="https://twitter.com/gauntlettiers" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Admin</h4>
+                        <ul>
+                            <li><a href="admin.html">Admin Panel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gauntlet Tiers. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/support.js"></script>
+</body>
+</html>

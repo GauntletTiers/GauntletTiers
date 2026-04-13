@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Gauntlet Tiers</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>GAUNTLET TIERS</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="tierlist.html" class="nav-link">Tier List</a></li>
+                <li><a href="community.html" class="nav-link">Community</a></li>
+                <li><a href="support.html" class="nav-link">Support</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline">Log In</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Section -->
+    <section class="admin-section">
+        <div class="container">
+            <div class="admin-header">
+                <h1><i class="fas fa-cog"></i> Admin Panel</h1>
+                <p>Manage tier lists and user rankings</p>
+            </div>
+
+            <!-- Login Warning -->
+            <div class="admin-login-warning" id="admin-login-warning">
+                <div class="warning-box">
+                    <i class="fas fa-lock"></i>
+                    <h3>Admin Access Required</h3>
+                    <p>Please log in with an authorized admin account to access this panel.</p>
+                    <p class="admin-email">Authorized: support.gauntlettiers@gmail.com</p>
+                    <a href="login.html" class="btn btn-primary">Log In</a>
+                </div>
+            </div>
+
+            <!-- Admin Dashboard (Hidden by default) -->
+            <div class="admin-dashboard" id="admin-dashboard" style="display: none;">
+                <div class="admin-sidebar">
+                    <div class="admin-user">
+                        <div class="admin-avatar">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <div class="admin-info">
+                            <h4>Admin User</h4>
+                            <p>support.gauntlettiers@gmail.com</p>
+                        </div>
+                    </div>
+                    <nav class="admin-nav">
+                        <a href="#" class="admin-nav-item active" data-tab="players">
+                            <i class="fas fa-users"></i> Manage Players
+                        </a>
+                        <a href="#" class="admin-nav-item" data-tab="tiers">
+                            <i class="fas fa-layer-group"></i> Edit Tiers
+                        </a>
+                        <a href="#" class="admin-nav-item" data-tab="tournaments">
+                            <i class="fas fa-trophy"></i> Tournaments
+                        </a>
+                        <a href="#" class="admin-nav-item" data-tab="settings">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="admin-content">
+                    <!-- Players Tab -->
+                    <div class="admin-tab active" id="tab-players">
+                        <h2>Manage Players</h2>
+                        <div class="admin-actions">
+                            <button class="btn btn-primary" onclick="openAddPlayerModal()">
+                                <i class="fas fa-plus"></i> Add Player
+                            </button>
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Search players...">
+                            </div>
+                        </div>
+                        <div class="players-table-container">
+                            <table class="players-table">
+                                <thead>
+                                    <tr>
+                                        <th>Player</th>
+                                        <th>Current Tier</th>
+                                        <th>Game Mode</th>
+                                        <th>Last Updated</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-players-list">
+                                    <tr class="empty-state">
+                                        <td colspan="5">No players added yet. Click "Add Player" to get started.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Tiers Tab -->
+                    <div class="admin-tab" id="tab-tiers">
+                        <h2>Edit Tier List</h2>
+                        <div class="tier-editor">
+                            <div class="mode-selector">
+                                <button class="mode-btn active" data-mode="sword">Sword</button>
+                                <button class="mode-btn" data-mode="axe">Axe</button>
+                                <button class="mode-btn" data-mode="uhc">UHC</button>
+                                <button class="mode-btn" data-mode="pot">Pot</button>
+                                <button class="mode-btn" data-mode="crystal">Crystal</button>
+                                <button class="mode-btn" data-mode="smp">SMP</button>
+                            </div>
+                            <div class="tier-edit-list">
+                                <div class="tier-edit-row">
+                                    <div class="tier-edit-label tier-ht1-label">HT1</div>
+                                    <div class="tier-edit-content">
+                                        <div class="drop-zone" data-tier="ht1">
+                                            <span class="drop-hint">Drop players here or click to add</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tier-edit-row">
+                                    <div class="tier-edit-label tier-lt1-label">LT1</div>
+                                    <div class="tier-edit-content">
+                                        <div class="drop-zone" data-tier="lt1">
+                                            <span class="drop-hint">Drop players here or click to add</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tier-edit-row">
+                                    <div class="tier-edit-label tier-ht2-label">HT2</div>
+                                    <div class="tier-edit-content">
+                                        <div class="drop-zone" data-tier="ht2">
+                                            <span class="drop-hint">Drop players here or click to add</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tier-edit-row">
+                                    <div class="tier-edit-label tier-lt2-label">LT2</div>
+                                    <div class="tier-edit-content">
+                                        <div class="drop-zone" data-tier="lt2">
+                                            <span class="drop-hint">Drop players here or click to add</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tier-edit-row">
+                                    <div class="tier-edit-label tier-ht3-label">HT3</div>
+                                    <div class="tier-edit-content">
+                                        <div class="drop-zone" data-tier="ht3">
+                                            <span class="drop-hint">Drop players here or click to add</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tier-edit-row">
+                                    <div class="tier-edit-label tier-lt3-label">LT3</div>
+                                    <div class="tier-edit-content">
+                                        <div class="drop-zone" data-tier="lt3">
+                                            <span class="drop-hint">Drop players here or click to add</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tier-edit-row">
+                                    <div class="tier-edit-label tier-ht4-label">HT4</div>
+                                    <div class="tier-edit-content">
+                                        <div class="drop-zone" data-tier="ht4">
+                                            <span class="drop-hint">Drop players here or click to add</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tier-edit-row">
+                                    <div class="tier-edit-label tier-lt4-label">LT4</div>
+                                    <div class="tier-edit-content">
+                                        <div class="drop-zone" data-tier="lt4">
+                                            <span class="drop-hint">Drop players here or click to add</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tier-edit-row">
+                                    <div class="tier-edit-label tier-ht5-label">HT5</div>
+                                    <div class="tier-edit-content">
+                                        <div class="drop-zone" data-tier="ht5">
+                                            <span class="drop-hint">Drop players here or click to add</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tier-edit-row">
+                                    <div class="tier-edit-label tier-lt5-label">LT5</div>
+                                    <div class="tier-edit-content">
+                                        <div class="drop-zone" data-tier="lt5">
+                                            <span class="drop-hint">Drop players here or click to add</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tier-edit-actions">
+                                <button class="btn btn-secondary" onclick="resetTiers()">Reset Changes</button>
+                                <button class="btn btn-primary" onclick="saveTiers()">
+                                    <i class="fas fa-save"></i> Save Changes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tournaments Tab -->
+                    <div class="admin-tab" id="tab-tournaments">
+                        <h2>Tournament Management</h2>
+                        <div class="admin-actions">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Create Tournament
+                            </button>
+                        </div>
+                        <div class="tournaments-list">
+                            <div class="empty-state">
+                                <i class="fas fa-trophy"></i>
+                                <p>No tournaments scheduled. Create one to get started.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Settings Tab -->
+                    <div class="admin-tab" id="tab-settings">
+                        <h2>Admin Settings</h2>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label>Site Name</label>
+                                <input type="text" value="Gauntlet Tiers">
+                            </div>
+                            <div class="form-group">
+                                <label>Discord Invite URL</label>
+                                <input type="text" value="https://discord.gg/gauntlettiers">
+                            </div>
+                            <div class="form-group">
+                                <label>YouTube Channel URL</label>
+                                <input type="text" value="https://youtube.com/@gauntlettiers">
+                            </div>
+                            <div class="form-group">
+                                <label>Maintenance Mode</label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <button class="btn btn-primary">Save Settings</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Player Modal -->
+    <div class="modal" id="add-player-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Player</h3>
+                <button class="modal-close" onclick="closeAddPlayerModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="add-player-form">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="new-player-name" placeholder="Enter Minecraft username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Game Mode</label>
+                        <select id="new-player-mode">
+                            <option value="sword">Sword</option>
+                            <option value="axe">Axe</option>
+                            <option value="uhc">UHC</option>
+                            <option value="pot">Pot</option>
+                            <option value="crystal">Crystal</option>
+                            <option value="smp">SMP</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tier</label>
+                        <select id="new-player-tier">
+                            <option value="ht1">HT1 (Best)</option>
+                            <option value="lt1">LT1 (2nd Best)</option>
+                            <option value="ht2">HT2</option>
+                            <option value="lt2">LT2</option>
+                            <option value="ht3">HT3</option>
+                            <option value="lt3">LT3</option>
+                            <option value="ht4">HT4</option>
+                            <option value="lt4">LT4</option>
+                            <option value="ht5">HT5 (2nd Worst)</option>
+                            <option value="lt5">LT5 (Worst)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Add Player</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>GAUNTLET TIERS</span>
+                    <p>The most accurate PvP ranking system.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="tierlist.html">Tier List</a></li>
+                            <li><a href="community.html">Community</a></li>
+                            <li><a href="support.html">Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Social</h4>
+                        <ul>
+                            <li><a href="https://discord.gg/gauntlettiers" target="_blank"><i class="fab fa-discord"></i> Discord</a></li>
+                            <li><a href="https://youtube.com/@gauntlettiers" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+                            <li><a href="https://twitter.com/gauntlettiers" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Admin</h4>
+                        <ul>
+                            <li><a href="admin.html">Admin Panel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gauntlet Tiers. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // REPLACE THESE VALUES WITH YOUR ACTUAL FIREBASE CONFIG
+        const firebaseConfig = {
+            apiKey: "AIzaSyA-Sv6xWjgfrtPSxHs_V2fWzlJ93aOG6Wk",
+            authDomain: "gauntlet-tiers-23926.firebaseapp.com",
+            databaseURL: "https://gauntlet-tiers-23926-default-rtdb.firebaseio.com",
+            projectId: "gauntlet-tiers-23926",
+            storageBucket: "gauntlet-tiers-23926.firebasestorage.app",
+            messagingSenderId: "817926603045",
+            appId: "1:817926603045:web:856ed273519a95f13f1acc"
+        };
+        window.firebaseConfig = firebaseConfig;
+    </script>
+    <script type="module" src="js/firebase-app.js"></script>
+
+    <script src="js/main.js"></script>
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>
